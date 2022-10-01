@@ -1,0 +1,29 @@
+spring:
+  kafka:
+    bootstrap-servers: 120.46.194.37:9092
+    producer: # 生产者
+      retries: 3 # 设置大于0的值，则客户端会将发送失败的记录重新发送
+      batch-size: 16384
+      buffer-memory: 33554432
+      acks: 1
+      # 指定消息key和消息体的编解码方式
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: common.log.scholar_of_yore.serializer.CommonValueSerializer
+dubbo:
+  application:
+    name: common.log.scholar_of_yore_client
+  protocol:
+    name: dubbo
+    port: -1
+    optimizer:
+  #    serialization: org.apache.dubbo.common.serialize.java.JavaSerialization
+  registry:
+    id: zk-registry
+    address: zookeeper://120.46.194.37:2181
+    check: false
+  config-center:
+    address: zookeeper://120.46.194.37:2181
+  metadata-report:
+    address: zookeeper://120.46.194.37:2181
+  consumer:
+    check: false
