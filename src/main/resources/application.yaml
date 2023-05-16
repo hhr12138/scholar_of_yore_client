@@ -9,21 +9,8 @@ spring:
       # 指定消息key和消息体的编解码方式
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: common.log.scholar_of_yore.serializer.CommonValueSerializer
-dubbo:
-  application:
-    name: common.log.scholar_of_yore_client
-  protocol:
-    name: dubbo
-    port: -1
-    optimizer:
-  #    serialization: org.apache.dubbo.common.serialize.java.JavaSerialization
-  registry:
-    id: zk-registry
-    address: zookeeper://120.46.194.37:2181
-    check: false
-  config-center:
-    address: zookeeper://120.46.194.37:2181
-  metadata-report:
-    address: zookeeper://120.46.194.37:2181
-  consumer:
-    check: false
+    template:
+      default-topic: common.log.scholar-of-yore.common-log
+#common:
+#  log:
+#    scholar-of-yore: 127.0.0.1:8889

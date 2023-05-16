@@ -15,10 +15,4 @@ public interface LogTemplate {
     void warn(String requestId, String PSM, String context);
 
     void error(String requestId, String PSM, String context);
-
-    RestResponse<List<CommonLog>> selectLogsByRequestId(String requestId, String targetRequestId, long startTime, long endTime, int size);
-
-    RestResponse<List<CommonLog>> selectLogsGeneratedXMin(String requestId, int x);
-
-    RestResponse<List<CommonLog>> selectLogsByUserId(String requestId, Long userId, long startTime, long endTime, int pageCnt, int size);
 }
